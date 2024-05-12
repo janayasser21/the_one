@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <title>Medical Cases</title>
+    <script src="main.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin: 20px auto; /* Center table and provide spacing */
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            color: aliceblue;
+        }
+
+        th {
+            background-color: transparent;
+            color: aliceblue;
+        }
+
+        label {
+            display: block;
+            color: aliceblue;
+        }
+
+        select, input[type="text"] {
+            padding: 8px;
+            margin-right: 5px;
+            display: block; /* Make them stack vertically */
+            margin: 10px auto; /* Center align the buttons and selects */
+            width: 200px; /* Standard width for all select elements and text inputs */
+        }
+
+        .filter-section {
+            text-align: left; /* Align filter section to the left */
+            margin-left: 20px; /* Add margin to the left */
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 12px 24px; /* Increase padding for larger button */
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2 class="logo"><img src="logo.png" alt="Our Logo" width="200" height="60" style="position: absolute; top: 10px; left: 20px;"> </h2>
+        <nav class="navigation">
+            <a href="index.html">Home</a>
+            <a href="AboutUs.html">About us</a>
+            <a href="ContactUs.html">Contact us</a>
+            <button onclick="location.href ='index.html'" class="btnRegister-popup">Logout</button>
+        </nav>
+    </header>
+    <h1 style="color: aliceblue; transform: translateY(-190px);">Medical Cases</h1>
+    <div class="filter-section">
+        <input type="text" id="caseIDFilter" placeholder="Case ID">
+        <input type="text" id="patientIDFilter" placeholder="Patient ID">
+        <input type="text" id="specialityFilter" placeholder="Speciality">
+        <input type="text" id="organizationNameFilter" placeholder="Organization Name">
+        <input type="text" id="areaFilter" placeholder="Area">
+        <input type="text" id="governorateFilter" placeholder="Governorate">
+        <button onclick="filterTable()">Filter</button>
+    </div>
+    <table id="medicalCasesTable">
+        <thead>
+            <tr>
+                <th>Case ID</th>
+                <th>Patient ID</th>
+                <th>Speciality</th>
+                <th>Organization Name</th>
+                <th>Area</th>
+                <th>Governorate</th>
+                <th>Action</th> <!-- Added Action header -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>A 45</td>
+                <td>145A</td>
+                <td>Cardiology</td>
+                <td>Habit for Humanity</td>
+                <td>Downtown</td>
+                <td>Cairo</td>
+                <td><button onclick="fulfillCase()">Fulfill</button></td> <!-- Added Fulfill button -->
+            </tr>
+            <tr>
+                <td>A 46</td>
+                <td>146 A</td>
+                <td>Orthopedics</td>
+                <td>Red Cross</td>
+                <td>Smouha</td>
+                <td>Alexandria</td>
+                <td><button onclick="fulfillCase()">Fulfill</button></td> <!-- Added Fulfill button -->
+            </tr>
+            <tr>
+                <td>A 47</td>
+                <td>147A</td>
+                <td>Pediatrics</td>
+                <td>UNICEF</td>
+                <td>Mohandessin</td>
+                <td>Giza</td>
+                <td><button onclick="fulfillCase()">Fulfill</button></td> <!-- Added Fulfill button -->
+            </tr>
+            <tr>
+                <td>A 48</td>
+                <td>148A</td>
+                <td>Oncology</td>
+                <td>World Wildlife Fund</td>
+                <td>Zamalek</td>
+                <td>Cairo</td>
+                <td><button onclick="fulfillCase()">Fulfill</button></td> <!-- Added Fulfill button -->
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        function filterTable() {
+            const caseID = document.getElementById('caseIDFilter').value.toLowerCase();
+            const patientID = document.getElementById('patientIDFilter').value.toLowerCase();
+            const speciality = document.getElementById('specialityFilter').value.toLowerCase();
+            const organizationName = document.getElementById('organizationNameFilter').value.toLowerCase();
+            const area = document.getElementById('areaFilter').value.toLowerCase();
+            const governorate = document.getElementById('governorateFilter').value.toLowerCase();
+            const table = document.getElementById('medicalCasesTable');
+            const tr = table.getElementsByTagName('tr');
+
+            for (let i = 1; i < tr.length; i++) {
+                tr[i].style.display = "none"; // Hide all rows initially
+                let tdCaseID = tr[i].getElementsByTagName('td')[0].textContent.toLowerCase();
+                let tdPatientID = tr[i].getElementsByTagName('td')[1].textContent.toLowerCase();
+                let tdSpeciality = tr[i].getElementsByTagName('td')[2].textContent.toLowerCase();
+                let tdOrganizationName = tr[i].getElementsByTagName('td')[3].textContent.toLowerCase();
+                let tdArea = tr[i].getElementsByTagName('td')[4].textContent.toLowerCase();
+                let tdGovernorate = tr[i].getElementsByTagName('td')[5].textContent.toLowerCase();
+
+                if ((caseID === "" || tdCaseID.includes(caseID)) &&
+                    (patientID === "" || tdPatientID.includes(patientID)) &&
+                    (speciality === "" || tdSpeciality.includes(speciality)) &&
+                    (organizationName === "" || tdOrganizationName.includes(organizationName)) &&
+                    (area === "" || tdArea.includes(area)) &&
+                    (governorate === "" || tdGovernorate.includes(governorate))) {
+                    tr[i].style.display = ""; // Show row if all conditions are met
+                }
+            }
+        }
+
+        function fulfillCase() {
+            alert("Case fulfilled");
+        }
+    </script>
+</body>
+</html>

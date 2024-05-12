@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <title>View Organization Requests</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            transform: translateX(-250px);
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            color: aliceblue;
+        }
+
+        th {
+            background-color: transparent;
+            color: aliceblue;
+        }
+
+        .accept, .reject {
+            padding: 4px 10px;
+            margin-right: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            background-color: #4CAF50; /* Green */
+            color: white;
+        }
+
+        .reject {
+            background-color: #f44336; /* Red */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2 class="logo"><img src="logo.png" alt="Our Logo" width="200" height="60" style="position: absolute; top: 10px; left: 20px;"> </h2>
+        <nav class="navigation">
+            <a href="AdminDashboard.html">Home</a>
+            <a href="AboutUs.html">About us</a>
+            <a href="ContactUs.html">Contact us</a>
+            <button onclick="location.href ='index.html'" class="btnRegister-popup">Logout</button>
+        </nav>
+    </header>
+    <h1 style="color: aliceblue; transform: translateY(-190px);">Organizations Requests:</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>World Wildlife Fund</td>
+                <td>Toys</td>
+                <td>
+                    <button class="accept" onclick="handleAccept(this)">Accept</button>
+                    <button class="reject" onclick="handleReject(this)">Reject</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        function handleAccept(button) {
+            alert("Request Accepted");
+            button.parentNode.parentNode.remove(); // Remove the row
+        }
+
+        function handleReject(button) {
+            alert("Request Rejected");
+            button.parentNode.parentNode.remove(); // Remove the row
+        }
+    </script>
+</body>
+</html>
