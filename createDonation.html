@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charity</title>
+    <link rel="stylesheet" href="organization.css">
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            background: url("background.png") no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .form-container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 80%;
+            max-width: 600px;
+            color: #fff;
+            text-align: center;
+        }
+
+        select, input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #fff;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #45a049;
+            }
+
+        label {
+            text-align: left;
+            display: block;
+            margin-top: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <label>Category</label>
+    <div class="input-box">
+        <span class="icon"><ion-icon name="cube"></ion-icon></span>
+        <select id="category" onchange="navigate()">
+            <option value="" disabled selected>Select Category</option>
+            <option value="clothes">Clothes</option>
+            <option value="toys">Toys</option>
+            <option value="food">Food</option>
+            <option value="medical supplies">Medical Supplies</option>
+            <option value="school supplies">School Supplies</option>
+            <option value="blood donations">Blood Donations</option>
+        </select>
+    </div>
+
+    <script>
+    function navigate() {
+            var selectBox = document.getElementById("category");
+            var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+            if (selectedValue === "clothes") {
+                window.location.href = "clothes.html";
+            }
+            else if (selectedValue === "toys") {
+                window.location.href = "Toys.html";
+            }
+            else if (selectedValue === "food") {
+                window.location.href = "FoodSupplies.html";
+            }
+            else if (selectedValue === "medical supplies") {
+                window.location.href = "MedicalSupplies.html";
+            }
+            else if (selectedValue === "school supplies") {
+                window.location.href = "schoolSupplies.html";
+            }
+            else if (selectedValue === "blood donations") {
+                window.location.href = "BloodDonations.html";
+            }
+
+        }</script>
+</body>
+</html>
