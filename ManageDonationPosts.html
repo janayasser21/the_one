@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <title>Manage Donation Posts</title>
+    <script src="main.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            transform: translateX(-250px);
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            color: aliceblue;
+        }
+
+        th {
+            background-color: transparent;
+            color: aliceblue;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 90%;
+            padding: 5px;
+            margin: 2px 0;
+            box-sizing: border-box;
+        }
+
+        .action-button {
+            padding: 5px 10px;
+            cursor: pointer;
+            color: white;
+            border: none;
+        }
+
+        .delete-button {
+            background-color: red;
+        }
+
+            .delete-button:hover {
+                background-color: darkred;
+            }
+
+        .update-button, .save-button, .cancel-button {
+            background-color: blue;
+        }
+
+            .update-button:hover, .save-button:hover, .cancel-button:hover {
+                background-color: darkblue;
+            }
+
+        .save-button, .cancel-button {
+            background-color: green;
+        }
+
+        .cancel-button {
+            background-color: grey;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2 class="logo"><img src="logo.png" alt="Our Logo" width="200" height="60" style="position: absolute; top: 10px; left: 20px;"></h2>
+        <nav class="navigation">
+            <a href="index.html">Home</a>
+            <a href="AboutUs.html">About us</a>
+            <a href="ContactUs.html">Contact us</a>
+            <button onclick="location.href ='index.html'" class="btnRegister-popup">Logout</button>
+        </nav>
+    </header>
+    <h1 style="color: aliceblue; transform: translateY(-190px);">Manage Donation Posts:</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Donation Type</th>
+                <th>Quantity</th>
+                <th>Location</th>
+                <th>Size</th>
+                <th>Color</th>
+                <th>Status</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Repeating structure for each donation entry -->
+            <tr>
+                <td>Blood units A+</td>
+                <td>10</td>
+                <td>5 Abbas El Akkad, Nasr City, Hospital Hayah</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Fulfilled</td>
+                <td><button class="action-button update-button" onclick="enableEditing(this)">Update</button></td>
+                <td><button class="action-button delete-button" onclick="deleteRow(this)">Delete</button></td>
+            </tr>
+            <!-- Add additional rows below as needed -->
+            <tr>
+                <td>Food: Meat</td>
+                <td>45</td>
+                <td>11 Ahmed Fakhry, Nasr City</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Fulfilled</td>
+                <td><button class="action-button update-button" onclick="enableEditing(this)">Update</button></td>
+                <td><button class="action-button delete-button" onclick="deleteRow(this)">Delete</button></td>
+
+            </tr>
+            <tr>
+                <td>Clothes: Pants</td>
+                <td>2</td>
+                <td>Red Cross Organization</td>
+                <td>M, XS</td>
+                <td>Black</td>
+                <td>Fulfilled</td>
+                <td><button class="action-button update-button" onclick="enableEditing(this)">Update</button></td>
+                <td><button class="action-button delete-button" onclick="deleteRow(this)">Delete</button></td>
+
+            </tr>
+            <tr>
+                <td>Toys: Cars</td>
+                <td>50</td>
+                <td>New Life Orphanage, Tagmoo</td>
+                <td>NN/A</td>
+                <td>Red, Blue, and Black</td>
+                <td>Fulfilled</td>
+                <td><button class="action-button update-button" onclick="enableEditing(this)">Update</button></td>
+                <td><button class="action-button delete-button" onclick="deleteRow(this)">Delete</button></td>
+            
+            </tr>
+            <tr>
+                <td>Blood units: B-</td>
+                <td>4</td>
+                <td>Red-Cross Organization, Tagmoo</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Fulfilled</td>
+                <td><button class="action-button update-button" onclick="enableEditing(this)">Update</button></td>
+                <td><button class="action-button delete-button" onclick="deleteRow(this)">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        function deleteRow(btn) {
+            var row = btn.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+    
+        function enableEditing(btn) {
+            var row = btn.parentNode.parentNode;
+            Array.from(row.cells).forEach((cell, index) => {
+                if (index < 5) { // Assuming the first 5 fields should be editable
+                    const text = cell.innerText;
+                    cell.innerHTML = `<input type='text' value='${text}' />`; // Corrected to use template literals
+                }
+            });
+            // Hide all buttons in this row to prevent multiple clicks
+            Array.from(row.querySelectorAll('.action-button')).forEach(button => button.style.display = 'none');
+            // Create Save and Cancel buttons
+            const saveBtn = document.createElement('button');
+            saveBtn.innerText = 'Save';
+            saveBtn.className = 'action-button save-button';
+            saveBtn.onclick = function () { saveChanges(this); };
+            row.cells[row.cells.length - 2].appendChild(saveBtn); // Append to Update column
+    
+            const cancelBtn = document.createElement('button');
+            cancelBtn.innerText = 'Cancel';
+            cancelBtn.className = 'action-button cancel-button';
+            cancelBtn.onclick = function () { cancelChanges(this); };
+            row.cells[row.cells.length - 2].appendChild(cancelBtn); // Append to Update column
+        }
+    
+        function saveChanges(btn) {
+            const row = btn.parentNode.parentNode;
+            Array.from(row.cells).forEach(cell => {
+                const input = cell.querySelector('input');
+                if (input) {
+                    cell.innerText = input.value;
+                }
+            });
+            cleanupButtons(row);
+        }
+    
+        function cancelChanges(btn) {
+            const row = btn.parentNode.parentNode;
+            Array.from(row.cells).forEach(cell => {
+                    const input = cell.querySelector('input');
+                    if (input) {
+                        cell.innerText = input.defaultValue; // Should use defaultValue to revert to original text
+                    }
+                });
+            cleanupButtons(row);
+        }
+    
+        function cleanupButtons(row) {
+            Array.from(row.querySelectorAll('.action-button')).forEach(button => button.style.display = '');
+            const lastActionCell = row.cells[row.cells.length - 2];
+            lastActionCell.removeChild(lastActionCell.querySelector('.save-button'));
+            lastActionCell.removeChild(lastActionCell.querySelector('.cancel-button'));
+        }
+    </script>
+    
+</body>
+</html>

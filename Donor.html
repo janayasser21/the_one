@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teaching Volunteer Form</title>
+    <link rel="stylesheet" href="home.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            background: url("background.png") no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .form-container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 80%;
+            max-width: 600px;
+            color: #fff;
+            text-align: center;
+        }
+
+        select, input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #fff;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #45a049;
+            }
+
+        label {
+            text-align: left;
+            display: block;
+            margin-top: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2 class="logo"><img src="logo.png" alt="Our Logo" width="200" height="60" style="position: absolute; top: 10px; left: 20px;"> </h2>
+        <nav class="navigation">
+            <a href="DonorDashboard.html">Home</a>
+            <a href="AboutUs.html">About us</a>
+            <a href="ContactUs.html">Contact us</a>
+            <button onclick="location.href ='index.html'" class="btnRegister-popup">Logout</button>
+        </nav>
+    </header>
+    <div class="form-container">
+        <h2>Volunteer Doctor Form</h2>
+        <label for="dayslot">day slot:</label>
+        <select id="subject">
+            <option value="saturday">Saturday</option>
+            <option value="sunday">Sunday</option>
+            <option value="monday">Monday</option>
+            <option value="tuesday">Tuesday</option>
+            <option value="wednesday">Wednesday</option>
+            <option value="thursday">Thursady</option>
+            <option value="friday">Friday</option>
+        </select>
+        <label for="VisitTiming">Select a specific timing for the day (per month):</label>
+        <input type="text" id="visitTiming">
+
+        <label for="VisitCount">Number of Pro-bono Visits:</label>
+        <input type="number" id="visitCount" min="1" max="100">
+
+
+        <label for="PatientCount">Number of Pro-bono Patients:</label>
+        <input type="number" id="patientcount" min="1" max="50">
+
+        <button onclick="submitDoctorForm()">Submit</button>
+    </div>
+
+    <script>function submitDoctorForm() {
+            var daySlot = document.getElementById("subject").value;
+            var visitTiming = document.getElementById("visitTiming").value;
+            var visitCount = document.getElementById("visitCount").value;
+            var patientCount = document.getElementById("patientcount").value;
+            alert("You have chosen " + daySlot + " for volunteering at " + visitTiming + " with " + visitCount + " pro-bono visits per month and " + patientCount + " pro-bono patients.");
+            }</script>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donor Account Settings</title>
+    <link rel="stylesheet" href="home.css">
+    <style>
+        body {
+            padding-top: 80px; /* Add padding to push the entire content below the fixed header */
+            font-family: Arial, sans-serif; /* Improved typography */
+            background-color: #282c34; /* Set background color */
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 100px;
+            background-color: transparent;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo img {
+            vertical-align: middle;
+        }
+
+        .navigation a, .navigation button {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .navigation button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .client-btn {
+            width: 100%;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+            background-color: rgba(0, 0, 0, 0.5); /* Set background color with transparency */
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            color: aliceblue;
+        }
+
+        th {
+            background-color: transparent;
+            color: aliceblue;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 6px 10px;
+            margin: 0;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            margin-top: 10px;
+        }
+
+        button.delete-btn {
+            background-color: #ff0000; /* Red */
+            color: white;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2 class="logo"><img src="logo.png" alt="Our Logo" width="200" height="60" style="position:absolute; top: 10px; left: 20px;"> </h2>
+        <nav class="navigation">
+            <a href="DonorDashboard.html">Home</a>
+            <a href="AboutUs.html">About us</a>
+            <a href="ContactUs.html">Contact us</a>
+            <button onclick="location.href='index.html'" class="btnRegister-popup">Logout</button>
+        </nav>
+    </header>
+    <div class="client-btn">
+        <table id="userData">
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>First Name</td>
+                    <td><input type="text" id="firstName" value="Donor"></td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td><input type="text" id="lastName" value="DonorLname"></td>
+                </tr>
+                <tr>
+                    <td>Username</td>
+                    <td><input type="text" id="username" value="donor1"></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" id="password" value="donor"></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="text" id="email" value="donor@gmail.com"></td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td><input type="text" id="address" value="5 Abbas El Akkad Nasr City"></td>
+                </tr>
+                <tr>
+                    <td>Contact Number</td>
+                    <td><input type="text" id="contactNumber" value="011110810810"></td>
+                </tr>
+                <tr>
+                    <td>Governorate</td>
+                    <td><input type="text" id="governorate" value="Cairo"></td>
+                </tr>
+                <tr>
+                    <td>Area</td>
+                    <td><input type="text" id="area" value="Nasr City"></td>
+                </tr>
+            </tbody>
+        </table>
+        <button onclick="updateRow()">Update</button>
+        <button onclick="deleteTable()" class="delete-btn">Delete account information</button>
+    </div>
+
+    <script>
+        function deleteTable() {
+            var table = document.getElementById("userData");
+            table.parentNode.removeChild(table);
+            alert("Account deleted successfully.");
+        }
+
+        function updateRow() {
+            var firstName = document.getElementById("firstName").value;
+            var lastName = document.getElementById("lastName").value;
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var email = document.getElementById("email").value;
+            var address = document.getElementById("address").value;
+            var contactNumber = document.getElementById("contactNumber").value;
+            var governorate = document.getElementById("governorate").value;
+            var area = document.getElementById("area").value;
+
+            var userData = [
+                firstName,
+                lastName,
+                username,
+                password,
+                email,
+                address,
+                contactNumber,
+                governorate,
+                area
+            ];
+
+            var table = document.getElementById("userData");
+            var valueCells = table.querySelectorAll("tbody td:nth-child(2)");
+
+            for (var i = 0; i < userData.length; i++) {
+                valueCells[i].textContent = userData[i];
+            }
+
+            alert("Information updated successfully.");
+        }
+    </script>
+</body>
+</html>

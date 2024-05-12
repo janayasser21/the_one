@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <title>Donor Details</title>
+    <script src="main.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            transform: translateX(-250px);
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            color: aliceblue;
+        }
+
+        th {
+            background-color: transparent;
+            color: aliceblue;
+        }
+
+        label {
+            display: block;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2 class="logo"><img src="logo.png" alt="Our Logo" width="200" height="60" style="position: absolute; top: 10px; left: 20px;"> </h2>
+        <nav class="navigation">
+            <a href="AdminDashboard.html">Home</a>
+            <a href="AboutUs.html">About us</a>
+            <a href="ContactUs.html">Contact us</a>
+            <button onclick="location.href ='index.html'" class="btnRegister-popup">Logout</button>
+        </nav>
+    </header>
+    <h1 style="color: aliceblue; transform: translateY(-190px);">Donor Details:</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2023-07-11</td>
+                <td>Ahmed Mohamed</td>
+                <td>Food</td>
+                <td>Accepted</td>
+            </tr>
+            <tr>
+                <td>2023-09-14</td>
+                <td>Omar Ashraf</td>
+                <td>Toys</td>
+                <td>Accepted</td>
+            </tr>
+            <tr>
+                <td>2023-11-29</td>
+                <td>Yousef Amr</td>
+                <td>Medicine</td>
+                <td>Accepted</td>
+            </tr>
+            <tr>
+                <td>2023-12-09</td>
+                <td>Karim Mohamed</td>
+                <td>Food</td>
+                <td>Accepted</td>
+            </tr>
+        </tbody>
+    </table>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details & Posts</title>
+    <link rel="stylesheet" href="home.css">
+    <style>
+        a {
+            text-decoration: none;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url("background.png") no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 100px;
+            background-color: transparent;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 99;
+        }
+
+        .logo {
+            font-size: 2em;
+            color: #fff;
+            user-select: none;
+        }
+
+        .navigation a {
+            position: relative;
+            font-size: 1.1em;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 40px;
+        }
+
+            .navigation a::after {
+                content: ' ';
+                position: absolute;
+                left: 0;
+                bottom: -6px;
+                width: 100%;
+                height: 3px;
+                background: #fff;
+                border-radius: 5px;
+                transform-origin: right;
+                transform: scaleX(0);
+                transition: transfrom .5s;
+            }
+
+            .navigation a:hover::after {
+                transform-origin: left;
+                transform: scaleX(1);
+            }
+
+        .navigation .btnRegister-popup {
+            width: 130px;
+            height: 50px;
+            background: transparent;
+            border: 2px solid #fff;
+            outline: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1em;
+            color: #fff;
+            font-weight: 500;
+            margin-left: 40px;
+        }
+
+            .navigation .btnRegister-popup:hover {
+                background: #fff;
+                color: black;
+            }
+
+        .clients-btn {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .btn {
+            width: 100%;
+            height: 45px;
+            background: transparent;
+            border: 2px solid #fff;
+            outline: none;
+            border-radius: 1em;
+            cursor: pointer;
+            font-size: 1em;
+            color: #fff;
+            font-weight: 500;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            padding: 10px;
+            text-align: center;
+            color: aliceblue;
+            backdrop-filter: blur(30px);
+        }
+
+            .btn:hover {
+                background-color: #fff;
+                color: black;
+            }
+
+            .btn:focus,
+            .btn:active {
+                outline:  none;
+            }
+
+
+        .input-box {
+            margin-top: 20px;
+        }
+
+            /* Adjust label color */
+            .input-box label {
+                color: #fff;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <h2 class="logo"><img src="logo.png" alt="Our Logo" width="200" height="60" style="position: absolute; top: 10px; left: 20px;"> </h2>
+        <nav class="navigation">
+            <a href="DonorDashboard.html">Home</a>
+            <a href="AboutUs.html">About us</a>
+            <a href="ContactUs.html">Contact us</a>
+            <button onclick="location.href='index.html'" class="btnRegister-popup">Logout</button>
+        </nav>
+    </header>
+    <div class="container">
+        <a href="DonationPosts.html"><button type="submit" class="btn">View Fulfilled Donation Posts</button></a>
+        <a href="DetailsForFulfilledPosts.html"><button type="submit" class="btn">View Fulfilled Posts Details</button></a>
+        <a href="DonorContactDetails.html"><button type="submit" class="btn">View donor contact details</button></a>
+        <a href="DonorDetails.html"><button type="submit" class="btn">ViewDonor Details</button></a>
+        <a href="orgDetails.html"><button type="submit" class="btn">View Organizations Details</button></a>
+        <a href="TeachingPosts.html"><button type="submit" class="btn">View Teaching Posts</button></a>
+        <a href="MedicalCases.html"><button type="submit" class="btn">View Medical Cases</button></a>
+        <a href="ItemsDetailsAndPosts.html"><button type="submit" class="btn">View Donation Items Details</button></a>
+
+        </div>
+</body>
+</html>

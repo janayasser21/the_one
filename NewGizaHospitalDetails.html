@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <title>New Giza Hospital Details </title>
+    <script src="main.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            transform: translateX(-250px);
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            color: aliceblue;
+        }
+
+        th {
+            background-color: transparent;
+            color: aliceblue;
+        }
+
+        label {
+            display: block;
+            color: aliceblue;
+        }
+
+        .map-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 20%; /* Adjust this value to control the height of the map */
+            overflow: hidden;
+            margin-top: 20px; /* Adjust this value to control the distance between table and map */
+        }
+
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2 class="logo"><img src="logo.png" alt="Our Logo" width="200" height="60" style="position: absolute; top: 10px; left: 20px;"> </h2>
+        <nav class="navigation">
+            <a href="DonorDashboard.html">Home</a>
+            <a href="AboutUs.html">About us</a>
+            <a href="ContactUs.html">Contact us</a>
+            <button onclick="location.href ='index.html'" class="btnRegister-popup">Logout</button>
+        </nav>
+    </header>
+    <h1 style="color: aliceblue; transform: translateY(-190px);">New Giza Hospital Details</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Patient Name</th>
+                <th>Blood Type</th>
+                <th>Hospital Name</th>
+                <th>Hospital area </th>
+                <th>Governorate</th>
+                <th>Hospital Address</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Kariem Youssef</td>
+                <td>O-</td>
+                <td>New Giza hospital</td>
+                <td>Giza</td>
+                <td>Giza</td>
+                <td>16 New giza el haram</td>
+                <td class="map-container" id="map"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: { lat: 29.9842, lng: 31.1342 }, // Coordinates for New Giza Hospital
+            });
+
+            var marker = new google.maps.Marker({
+                position: { lat: 29.9842, lng: 31.1342 },
+                map: map,
+                title: 'New Giza Hospital'
+            });
+        }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPG0tom0DCz5lMkyxfyuVsr2YYujXXZ3A&callback=initMap">
+    </script>
+</body>
+</html>

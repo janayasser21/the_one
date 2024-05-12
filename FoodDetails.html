@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <title>Food Details</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            transform: translateX(-250px);
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            color: aliceblue;
+        }
+
+        th {
+            background-color: transparent;
+            color: aliceblue;
+        }
+
+        .btnRegister-popup, .food-button {
+            background-color: transparent; /* Make button background transparent */
+            color: aliceblue; /* Adjust text color for visibility */
+            border: none; /* Remove border */
+            cursor: pointer; /* Cursor appears as pointer to indicate it's clickable */
+            padding: 8px 16px; /* Padding for better touch area */
+            transition: color 0.3s; /* Smooth transition for hover effect */
+            text-align: left; /* Align text to the left */
+            width: 100%; /* Full width to fill the table cell */
+        }
+
+        .food-button:hover {
+            color: #00bfff; /* Change color on hover for better user experience */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2 class="logo"><img src="logo.png" alt="Our Logo" width="200" height="60" style="position: absolute; top: 10px; left: 20px;"> </h2>
+        <nav class="navigation">
+            <a href="DonorDashboard.html">Home</a>
+            <a href="AboutUs.html">About us</a>
+            <a href="ContactUs.html">Contact us</a>
+            <button onclick="location.href ='index.html'" class="btnRegister-popup">Logout</button>
+        </nav>
+    </header>
+    <h1 style="color: aliceblue; transform: translateY(-190px);">Food Details:</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><button class="food-button" onclick="location.href='Bread.html'">Bread</button></td>
+            </tr>
+            <tr>
+                <td><button class="food-button" onclick="location.href='Cucumber.html'">Cucumber</button></td>
+            </tr>
+            <tr>
+                <td><button class="food-button" onclick="location.href='Chicken.html'">Chicken</button></td>
+            </tr>
+            <tr>
+                <td><button class="food-button" onclick="location.href='Tomato.html'">Tomato</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <script src="script.js"></script>
+</body>
+</html>

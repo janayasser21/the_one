@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <title>View Registered Organizations</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin: 20px auto; /* Center table and provide spacing */
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            color: aliceblue;
+        }
+
+        th {
+            background-color: transparent;
+            color: aliceblue;
+        }
+
+        label {
+            display: block;
+            color: aliceblue;
+            margin-left: 20px; /* Adjust margin to align labels */
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            margin-right: 5px;
+            display: block; /* Make them stack vertically */
+            margin: 10px 20px; /* Adjust margin to align inputs */
+            width: 200px; /* Standard width for all text inputs */
+        }
+
+        .filter-section {
+            text-align: left; /* Align filter section to the left */
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: transparent;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-left: 20px; /* Adjust margin to align button */
+            padding: 12px 24px; /* Adjust padding to increase button size */
+            font-size: 16px; /* Adjust font size */
+        }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <h2 class="logo"><img src="logo.png" alt="Our Logo" width="200" height="60" style="position: absolute; top: 10px; left: 20px;"> </h2>
+        <nav class="navigation">
+            <a href="AdminDashboard.html">Home</a>
+            <a href="AboutUs.html">About us</a>
+            <a href="ContactUs.html">Contact us</a>
+            <button onclick="location.href ='index.html'" class="btnRegister-popup">Logout</button>
+        </nav>
+    </header>
+    <h1 style="color: aliceblue; transform: translateY(-190px);">Registered Organizations:</h1>
+    <div class="filter-section">
+        <label for="areaFilter">Area:</label>
+        <input type="text" id="areaFilter" placeholder="Enter Area">
+        <label for="governorateFilter">Governorate:</label>
+        <input type="text" id="governorateFilter" placeholder="Enter Governorate">
+        <label for="orgTypeFilter">Organization Type:</label>
+        <input type="text" id="orgTypeFilter" placeholder="Enter Organization Type">
+        <button onclick="filterTable()">Filter</button>
+    </div>
+    <div class="filter-section">
+        <label for="orgNameSearch">Search by Organization Name:</label>
+        <input type="text" id="orgNameSearch" placeholder="Enter Organization Name" onkeyup="searchTable()">
+    </div>
+    <table id="teachingPostsTable">
+        <thead>
+            <tr>
+                <th>Area</th>
+                <th>Governorate</th>
+                <th>Organization type</th>
+                <th>Organization name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Cairo</td>
+                <td>Cairo</td>
+                <td>Municipality</td>
+                <td>Habit for Humanity</td>
+            </tr>
+
+            <tr>
+                <td>Giza</td>
+                <td>Giza</td>
+                <td>Government</td>
+                <td>Red Cross</td>
+            </tr>
+
+            <tr>
+                <td>Alexandria</td>
+                <td>Alexandria</td>
+                <td>Public Service</td>
+                <td>UNICEF</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        function filterTable() {
+            var inputArea, inputGovernorate, inputOrgType, filterArea, filterGovernorate, filterOrgType, table, tr, tdArea, tdGovernorate, tdOrgType, i, txtValueArea, txtValueGovernorate, txtValueOrgType;
+            inputArea = document.getElementById("areaFilter");
+            inputGovernorate = document.getElementById("governorateFilter");
+            inputOrgType = document.getElementById("orgTypeFilter");
+            filterArea = inputArea.value.toUpperCase();
+            filterGovernorate = inputGovernorate.value.toUpperCase();
+            filterOrgType = inputOrgType.value.toUpperCase();
+            table = document.getElementById("teachingPostsTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                tdArea = tr[i].getElementsByTagName("td")[0];
+                tdGovernorate = tr[i].getElementsByTagName("td")[1];
+                tdOrgType = tr[i].getElementsByTagName("td")[2];
+                if (tdArea && tdGovernorate && tdOrgType) {
+                    txtValueArea = tdArea.textContent || tdArea.innerText;
+                    txtValueGovernorate = tdGovernorate.textContent || tdGovernorate.innerText;
+                    txtValueOrgType = tdOrgType.textContent || tdOrgType.innerText;
+                    if (txtValueArea.toUpperCase().indexOf(filterArea) > -1 &&
+                        txtValueGovernorate.toUpperCase().indexOf(filterGovernorate) > -1 &&
+                        txtValueOrgType.toUpperCase().indexOf(filterOrgType) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+        function searchTable() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("orgNameSearch");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("teachingPostsTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[3];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
