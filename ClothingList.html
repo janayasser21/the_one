@@ -1,0 +1,322 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <title>Clothing List</title>
+    <script src="main.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            color: aliceblue;
+        }
+
+        th {
+            background-color: transparent;
+            color: aliceblue;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 100px;
+            background-color: transparent;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo img {
+            vertical-align: middle;
+        }
+
+        .navigation a, .navigation button {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .navigation button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .filter-section {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        select, button {
+            padding: 8px;
+            margin-right: 5px;
+            display: block;
+            margin: 10px auto;
+            width: 200px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <h2 class="logo"><img src="logo.png" alt="Our Logo" width="200" height="60"></h2>
+        <nav class="navigation">
+            <a href="DonorDashboard.html">Home</a>
+            <a href="AboutUs.html">About us</a>
+            <a href="ContactUs.html">Contact us</a>
+            <button onclick="location.href='index.html'">Logout</button>
+        </nav>
+    </header>
+    <div class="filter-section">
+        <select id="typeFilter">
+            <option value="">Select Type</option>
+            <option value="Pants">Pants</option>
+            <option value="Dress">Dress</option>
+            <option value="Shoes">Shoes</option>
+            <option value="T-Shirt">T-Shirt</option>
+        </select>
+        <select id="ageFilter">
+            <option value="">Select Age</option>
+            <option value="1-3">1-3</option>
+            <option value="4-7">4-7</option>
+            <option value="8-10">8-10</option>
+            <option value="11+">11+</option>
+        </select>
+        <select id="genderFilter">
+            <option value="">Select Gender</option>
+            <option value="Female">Female</option>
+            <option value="Male">Male</option>
+            <option value="Unisex">Unisex</option>
+        </select>
+        <select id="seasonFilter">
+            <option value="">Select Season</option>
+            <option value="Summer">Summer</option>
+            <option value="Winter">Winter</option>
+            <option value="Autumn">Autumn</option>
+        </select>
+        <select id="materialFilter">
+            <option value="">Select Material</option>
+            <option value="Polyster">Polyster</option>
+            <option value="Cotton">Cotton</option>
+            <option value="Nylon">Nylon</option>
+            <option value="Wool">Wool</option>
+        </select>
+        <select id="quantityFilter">
+            <option value="">Select Quantity Range</option>
+            <option value="1-20">1-20</option>
+            <option value="21-40">21-40</option>
+            <option value="41-60">41-60</option>
+            <option value="60+">More than 60</option>
+        </select>
+        <button onclick="filterClothing()">Filter</button>
+    </div>
+
+    <table id="clothingTable">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Season</th>
+                <th>Material</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Pants</td>
+                <td>10</td>
+                <td>Male</td>
+                <td>Summer</td>
+                <td>Polyster</td>
+                <th>30</th>
+
+            </tr>
+            <tr>
+                <td>Pants</td>
+                <td>3</td>
+                <td>Female</td>
+                <td>Winter</td>
+                <td>Cotton</td>
+                <th>5</th>
+
+            </tr>
+            <tr>
+                <td>Pants</td>
+                <td>15</td>
+                <td>Male</td>
+                <td>Autumn</td>
+                <td>Nylon</td>
+                <td>40</td>
+
+            </tr>
+            <tr>
+                <td>Pants</td>
+                <td>7</td>
+                <td>Male</td>
+                <td>Winter</td>
+                <td>Wool</td>
+                <td>60</td>
+            </tr>
+            <tr>
+                <td>Dress</td>
+                <td>10</td>
+                <td>Female</td>
+                <td>Summer</td>
+                <td>Polyster</td>
+                <td>30</td>
+            </tr>
+            <tr>
+                <td>Dress</td>
+                <td>3</td>
+                <td>Female</td>
+                <td>Winter</td>
+                <td>Cotton</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>Dress</td>
+                <td>15</td>
+                <td>Female</td>
+                <td>Autumn</td>
+                <td>Nylon</td>
+                <td>40</td>
+            </tr>
+            <tr>
+                <td>Dress</td>
+                <td>7</td>
+                <td>Female</td>
+                <td>Winter</td>
+                <td>Wool</td>
+                <td>60</td>
+            </tr>
+            <tr>
+                <td>Shoes</td>
+                <td>10</td>
+                <td>Male</td>
+                <td>Summer</td>
+                <td>Polyster</td>
+                <th>30</th>
+
+            </tr>
+            <tr>
+                <td>Shoes</td>
+                <td>3</td>
+                <td>Female</td>
+                <td>Winter</td>
+                <td>Cotton</td>
+                <th>5</th>
+
+            </tr>
+            <tr>
+                <td>Shoes</td>
+                <td>15</td>
+                <td>Male</td>
+                <td>Autumn</td>
+                <td>Nylon</td>
+                <td>40</td>
+
+            </tr>
+            <tr>
+                <td>Shoes</td>
+                <td>7</td>
+                <td>Male</td>
+                <td>Winter</td>
+                <td>Wool</td>
+                <td>60</td>
+            </tr>
+            <tr>
+                <td>T-Shirt</td>
+                <td>10</td>
+                <td>Male</td>
+                <td>Summer</td>
+                <td>Polyster</td>
+                <th>30</th>
+
+            </tr>
+            <tr>
+                <td>T-Shirt</td>
+                <td>3</td>
+                <td>Female</td>
+                <td>Winter</td>
+                <td>Cotton</td>
+                <th>5</th>
+
+            </tr>
+            <tr>
+                <td>T-Shirt</td>
+                <td>15</td>
+                <td>Male</td>
+                <td>Autumn</td>
+                <td>Nylon</td>
+                <td>40</td>
+
+            </tr>
+            <tr>
+                <td>T-Shirt</td>
+                <td>7</td>
+                <td>Male</td>
+                <td>Winter</td>
+                <td>Wool</td>
+                <td>60</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        function filterClothing() {
+            const type = document.getElementById('typeFilter').value;
+            const age = document.getElementById('ageFilter').value;
+            const gender = document.getElementById('genderFilter').value;
+            const season = document.getElementById('seasonFilter').value;
+            const material = document.getElementById('materialFilter').value;
+            const quantity = document.getElementById('quantityFilter').value;
+
+            const table = document.getElementById('clothingTable');
+            const tr = table.getElementsByTagName('tr');
+
+            for (let i = 1; i < tr.length; i++) {
+                let match = true;
+                const td = tr[i].getElementsByTagName('td');
+
+                if (type && td[0].textContent !== type) match = false;
+                if (age && !age.includes('+') && (td[1].textContent < parseInt(age.split('-')[0]) || td[1].textContent > parseInt(age.split('-')[1]))) match = false;
+                if (age && age.includes('+') && td[1].textContent < parseInt(age.split('+')[0])) match = false;
+                if (gender && td[2].textContent !== gender) match = false;
+                if (season && td[3].textContent !== season) match = false;
+                if (material && td[4].textContent !== material) match = false;
+                if (quantity && !quantity.includes('+') && (parseInt(td[5].textContent) < parseInt(quantity.split('-')[0]) || parseInt(td[5].textContent) > parseInt(quantity.split('-')[1]))) match = false;
+                if (quantity && quantity.includes('+') && parseInt(td[5].textContent) <= parseInt(quantity.split('+')[0])) match = false;
+
+                tr[i].style.display = match ? "" : "none";
+            }
+        }
+    </script>
+</body>
+</html>

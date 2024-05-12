@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <script src="main.js"></script>
+    <title>Blood Donations</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            background: url("background.png") no-repeat center center fixed;
+            background-size: cover;
+        }
+    
+        .form-container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 80%;
+            max-width: 600px;
+            color: #fff;
+            text-align: center;
+        }
+    
+        select, input[type="number"], input[type="text"] {
+            width: calc(100% - 18px); /* Adjust width to match select dropdowns */
+            padding: 8px;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #fff;
+        }
+    
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    
+        button:hover {
+            background-color: #45a049;
+        }
+    
+        label {
+            text-align: left;
+            display: block;
+            margin-top: 20px;
+        }
+    
+        h2 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2 class="logo"><img src="logo.png" alt="Our Logo" width="200" height="60" style="position: absolute; top: 10px; left: 20px;"> </h2>
+        <nav class="navigation">
+            <a href="OrganizationDashboard.html">Home</a>
+            <a href="AboutUs.html">About us</a>
+            <a href="ContactUs.html">Contact us</a>
+            <button onclick="location.href ='index.html'" class="btnRegister-popup">Logout</button>
+        </nav>
+    </header>
+    <div class="form-container">
+        <h2>Submit Blood Donations Donation</h2>
+
+        <label for="type">Blood Type:</label>
+        <select id="type">
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+        </select>
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="">
+
+        <button onclick="submitPost()">Submit</button>
+    </div>
+    <script>
+        function submitPost() {
+            var size = document.getElementById("type").value;
+            var quantity = document.getElementById("location").value;
+            alert("You have selected Blood Type: " + size + ", Location: " + quantity);
+        }
+    </script>
+</body>
+</html>
