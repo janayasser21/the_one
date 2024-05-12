@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <title>View School Supplies List</title>
+    <script src="main.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px auto; /* Center table and provide spacing */
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            color: aliceblue;
+        }
+
+        th {
+            background-color: transparent;
+            color: aliceblue;
+        }
+
+        select, button {
+            padding: 8px;
+            margin-right: 5px;
+            display: block; /* Make them stack vertically */
+            margin: 10px auto; /* Center align the buttons and selects */
+            width: 200px; /* Standard width for all select elements and buttons */
+        }
+
+        .filter-section {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <h2 class="logo"><img src="logo.png" alt="Our Logo" width="200" height="60" style="position: absolute; top: 10px; left: 20px;"> </h2>
+        <nav class="navigation">
+            <a href="DonorDashboard.html">Home</a>
+            <a href="AboutUs.html">About us</a>
+            <a href="ContactUs.html">Contact us</a>
+            <button onclick="location.href ='index.html'" class="btnRegister-popup">Logout</button>
+        </nav>
+    </header>
+    <h1 style="color: aliceblue; margin-top: 120px;">School Supplies List:</h1>
+
+    <div class="filter-section">
+        <select id="supplyTypeFilter">
+            <option value="">Select Supply Type</option>
+            <option value="Calculator">Calculator</option>
+            <option value="Book">Book</option>
+            <option value="Lunch Box">Lunch Box</option>
+        </select>
+        <select id="colorFilter">
+            <option value="">Select Color</option>
+            <option value="Black">Black</option>
+            <option value="Red">Red</option>
+            <option value="Blue">Blue</option>
+        </select>
+        <select id="quantityFilter">
+            <option value="">Select Quantity Range</option>
+            <option value="1-20">1-20</option>
+            <option value="21-40">21-40</option>
+            <option value="41-60">41-60</option>
+            <option value="60+">More than 60</option>
+        </select>
+        <button onclick="filterTable()">Filter</button>
+    </div>
+
+    <table id="suppliesTable">
+        <thead>
+            <tr>
+                <th>Supply Type</th>
+                <th>Quantity</th>
+                <th>Color</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Calculator</td>
+                <td>10</td>
+                <td>Black</td>
+            </tr>
+            <tr>
+                <td>Book</td>
+                <td>30</td>
+                <td>Blue</td>
+            </tr>
+            <tr>
+                <td>Lunch Box</td>
+                <td>50</td>
+                <td>Black</td>
+            </tr>
+            <tr>
+                <td>Calculator</td>
+                <td>15</td>
+                <td>Blue</td>
+            </tr>
+            <tr>
+                <td>Book</td>
+                <td>25</td>
+                <td>Red</td>
+            </tr>
+            <tr>
+                <td>Lunch Box</td>
+                <td>60</td>
+                <td>Blue</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        function filterTable() {
+            const supplyType = document.getElementById('supplyTypeFilter').value;
+            const color = document.getElementById('colorFilter').value;
+            const quantityRange = document.getElementById('quantityFilter').value.split('-');
+            const table = document.getElementById('suppliesTable');
+            const tr = table.getElementsByTagName('tr');
+
+            for (let i = 1; i < tr.length; i++) {
+                tr[i].style.display = "none"; // Hide all rows initially
+                let tdSupplyType = tr[i].getElementsByTagName('td')[0];
+                let tdQuantity = parseInt(tr[i].getElementsByTagName('td')[1].textContent, 10);
+                let tdColor = tr[i].getElementsByTagName('td')[2];
+                let minQty = parseInt(quantityRange[0], 10);
+                let maxQty = parseInt(quantityRange[1], 10);
+
+                if ((supplyType === "" || tdSupplyType.textContent === supplyType) &&
+                    (color === "" || tdColor.textContent === color) &&
+                    (quantityRange.length < 2 || (tdQuantity >= minQty && tdQuantity <= maxQty) || (quantityRange[0] === "60+" && tdQuantity > 60))) {
+                    tr[i].style.display = ""; // Show row if all conditions are met
+                }
+            }
+        }
+    </script>
+</body>
+</html>
