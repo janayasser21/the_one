@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Bank</title>
+    <script src="Register.js"></script>
+    <link rel="stylesheet" href="Register.css">
+    <script src="main.js"></script>
+</head>
+<body>
+    <header>
+        <h2 class="logo"><img src="logo.png" alt="Our Logo" width="200" height="60" style="position: absolute; top: 10px; left: 20px;"> </h2>
+        <nav class="navigation">
+            <a href="AboutUs.html">About us</a>
+            <a href="ContactUs.html">Contact us</a>
+            <button onclick="location.href ='index.html'" class="btnRegister-popup">Login</button>
+        </nav>
+    </header>
+    <div class="wrapper">
+        <div class="form-box Register">
+            <h2>Registration</h2>
+            <form action="#">
+                <div class="input-row">
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="person"></ion-icon> </span>
+                        <input type="text" id="First_Name" required>
+                        <label>First Name</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="person"></ion-icon> </span>
+                        <input type="text" id="Last_Name" required>
+                        <label>Last Name</label>
+                    </div>
+                </div>
+                <div class="input-row">
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="mail"></ion-icon> </span>
+                        <input type="email" id="Email" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                        <input type="password" id="password" required>
+                        <label>Password</label>
+                    </div>
+                    <div class="input-row">
+                        <div class="input-box">
+                            <input type="text" id="username" required>
+                            <label>Username</label>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="input-row">
+                            <div class="input-box">
+                                <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                                <input type="password" id="cpassword" required>
+                                <label>Confirm password</label>
+                            </div>
+                            <div class="input-box">
+                                <span class="icon"><ion-icon name="gender"></ion-icon> </span>
+                                <select id="Gender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="Contact Number"></ion-icon> </span>
+                            <input type="text" id="Contact_Number" required>
+                            <label>Contact Number</label>
+                        </div>
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="Organization Name"></ion-icon> </span>
+                            <input type="text" id="Organization_Name">
+                            <label>Organization Name (if required)</label>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="Organization Type"></ion-icon> </span>
+                            <input type="text" id="Organization_Type">
+                            <label>Organization Type (if required)</label>
+                        </div>
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="person"></ion-icon> </span>
+                            <input type="text" id="Address" required>
+                            <label>Address</label>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="person"></ion-icon> </span>
+                            <input type="text" id="Area" required>
+                            <label>Area</label>
+                        </div>
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="person"></ion-icon> </span>
+                            <input type="text" id="Governorate" required>
+                            <label>Governorate</label>
+                        </div>
+                        <div class="input-box">
+                            <!-- Add an onclick event to the upload button -->
+                            <button type="button" class="btn" onclick="chooseFile()">Upload</button>
+                            <input type="file" id="org-document" accept=".pdf, .doc, .docx" style="display: none;">
+                        </div>
+                    </div>
+                    <div class="remember-forgot">
+                        <label><input type="checkbox" id="agree-terms">I agree to the terms and conditions</label>
+                    </div>
+                    <div class="login-register">
+                        <p>Already have an account?<a href="index.html" class="login-link">Login</a></p>
+                    </div>
+            </form>
+            <!--  <button type="submit" class="btn" onclick="validate()">Register</button> -->
+            <button type="button" class="btn" onclick="register()">Register</button>
+        </div>
+        <script src="script.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
