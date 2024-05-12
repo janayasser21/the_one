@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <title>T-Shirt</title>
+    <script src="main.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            transform: translateX(-250px);
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            color: aliceblue;
+        }
+
+        th {
+            background-color: transparent;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2 class="logo"><img src="logo.png" alt="Our Logo" width="200" height="60" style="position: absolute; top: 10px; left: 20px;"> </h2>
+        <nav class="navigation">
+            <a href="DonorDashboard.html">Home</a>
+            <a href="AboutUs.html">About us</a>
+            <a href="ContactUs.html">Contact us</a>
+            <button onclick="location.href ='index.html'" class="btnRegister-popup">Logout</button>
+        </nav>
+    </header>
+    <h1 style="color: aliceblue; transform: translateY(-190px);">T-Shirt Details:</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Season</th>
+                <th>Material</th>
+                <th>Quantity</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>10</td>
+                <td>Male</td>
+                <td>Summer</td>
+                <td>Polyster</td>
+                <th>30</th>
+
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Female</td>
+                <td>Winter</td>
+                <td>Cotton</td>
+                <th>5</th>
+
+            </tr>
+            <tr>
+                <td>15</td>
+                <td>Male</td>
+                <td>Autumn</td>
+                <td>Nylon</td>
+                <td>40</td>
+
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Male</td>
+                <td>Winter</td>
+                <td>Wool</td>
+                <td>60</td>
+
+            </tr>
+        </tbody>
+    </table>
+    <script src="script.js"></script>
+</body>
+</html>
