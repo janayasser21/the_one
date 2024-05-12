@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donor Form</title>
+    <link rel="stylesheet" href="home.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            background: url("background.png") no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .form-container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 80%;
+            max-width: 600px;
+            color: #fff;
+            text-align: center;
+        }
+
+        select, input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #fff;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #45a049;
+            }
+
+        label {
+            text-align: left;
+            display: block;
+            margin-top: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2 class="logo"><img src="logo.png" alt="Our Logo" width="200" height="60" style="position: absolute; top: 10px; left: 20px;"> </h2>
+        <nav class="navigation">
+            <a href="DonorDashboard.html">Home</a>
+            <a href="AboutUs.html">About us</a>
+            <a href="ContactUs.html">Contact us</a>
+            <button onclick="location.href ='index.html'" class="btnRegister-popup">Logout</button>
+        </nav>
+    </header>
+    <div class="form-container">
+        <h2>Donor Form</h2>
+
+        <label for="clothesquanitity">Number of clothes items:</label>
+        <input type="number" id="clothescount" min="1" max="50">
+
+        <label for="stationaryquantity">Number of stationary items:</label>
+        <input type="number" id="stationarycount" min="1" max="100">
+
+        <label for="Bookquantity">Number of books:</label>
+        <input type="number" id="bookcount" min="1" max="100">
+
+        <label for="toysquantity">Number of toys:</label>
+        <input type="number" id="toyscount" min="1" max="100">
+
+        <label for="foodquantity">Number of food supplies:</label>
+        <input type="number" id="foodcount" min="1" max="100">
+
+        <label for="medicalsuppliesquantity">Number of medical supplies:</label>
+        <input type="number" id="medicaalsupplies" min="1" max="100">
+
+        <button onclick="submitDoctorForm()">Submit</button>
+    </div>
+
+    <script>
+        function submitDoctorForm() {
+            var clothesCount = document.getElementById("clothescount").value;
+            var stationaryCount = document.getElementById("stationarycount").value;
+            var bookCount = document.getElementById("bookcount").value;
+            var toysCount = document.getElementById("toyscount").value;
+            var foodCount = document.getElementById("foodcount").value;
+            var medicalSuppliesCount = document.getElementById("medicaalsupplies").value;
+
+            var message = 'You have chosen the following items for volunteering:\n';
+            message += "- Clothes items:" + clothesCount + '\n';
+            message += "- Stationary items: " + stationaryCount + '\n';
+            message += "- Books: " +  bookCount + '\n';
+            message += "- Toys: " + toysCount + '\n';
+            message += "- Food supplies: " + foodCount + '\n';
+            message += "- Medical supplies: " + medicalSuppliesCount;
+
+            alert(message);
+        }
+    </script>

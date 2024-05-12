@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <title>Blood Donation List</title>
+    <script src="main.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #filters {
+            width: 20%;
+            padding: 20px;
+            background-color: transparent;
+            color: aliceblue;
+        }
+
+            #filters label, #filters input, #filters select, #filters button {
+                display: block;
+                margin-bottom: 10px;
+            }
+
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin-right: 20px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            color: aliceblue;
+        }
+
+        th {
+            background-color: transparent;
+            color: aliceblue;
+        }
+        .view-details-btn {
+            padding: 6px 12px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .view-details-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2 class="logo"><img src="logo.png" alt="Our Logo" width="200" height="60" style="position: absolute; top: 10px; left: 20px;"> </h2>
+        <nav class="navigation">
+            <a href="DonorDashboard.html">Home</a>
+            <a href="AboutUs.html">About us</a>
+            <a href="ContactUs.html">Contact us</a>
+            <button onclick="location.href ='index.html'" class="btnRegister-popup">Logout</button>
+        </nav>
+    </header>
+
+    <div id="filters">
+        <!-- Filter Form -->
+        <form id="filterForm">
+            <label for="hospitalName">Hospital Name:</label>
+            <input type="text" id="hospitalName" name="hospitalName">
+            <label for="area">Area:</label>
+            <input type="text" id="area" name="area">
+            <label for="governorate">Governorate:</label>
+            <input type="text" id="governorate" name="governorate">
+            <button type="button" onclick="filter()">Filter</button>
+        </form>
+    </div>
+
+    <!-- Table for Blood Donation Details -->
+    <table id="bloodDonationTable">
+        <thead>
+            <tr>
+                <th>Hospital Name</th>
+                <th>Hospital Area</th>
+                <th>Governorate</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>57357 Hospital</td>
+                <td>Maadi</td>
+                <td>Cairo</td>
+                <td><button class="view-details-btn" onclick="window.location.href='57375HospitalDetails.html';">View Details</button></td>
+            </tr>
+            <tr>
+                <td>Alexandria University Hospital</td>
+                <td>Smouha</td>
+                <td>Alexandria</td>
+                <td><button class="view-details-btn" onclick="window.location.href='AlexandriaUniversityDetails1.html';">View Details</button></td>
+            </tr>
+            <tr>
+                <td>Alexandria University Hospital</td>
+                <td>Smouha</td>
+                <td>Alexandria</td>
+                <td><button class="view-details-btn" onclick="window.location.href='AlexandriaUniversityDetails2.html';">View Details</button></td>
+            </tr>
+            <tr>
+                <td>New Giza hospital</td>
+                <td>Giza</td>
+                <td>Giza</td>
+                <td><button class="view-details-btn" onclick="window.location.href='NewGizaHospitalDetails.html';">View Details</button></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <script>
+        function filter() {
+            var hospitalName = document.getElementById("hospitalName").value.toLowerCase();
+            var area = document.getElementById("area").value.toLowerCase();
+            var governorate = document.getElementById("governorate").value.toLowerCase();
+
+            var rows = document.getElementById("bloodDonationTable").getElementsByTagName("tr");
+            for (var i = 1; i < rows.length; i++) {
+                var cells = rows[i].getElementsByTagName("td");
+                var display = true;
+
+
+                if (hospitalName && cells[0].textContent.toLowerCase().indexOf(hospitalName) === -1) {
+                    display = false;
+                }
+
+                if (area && cells[1].textContent.toLowerCase().indexOf(area) === -1) {
+                    display = false;
+                }
+
+                if (governorate && cells[2].textContent.toLowerCase().indexOf(governorate) === -1) {
+                    display = false;
+                }
+
+                rows[i].style.display = display ? "" : "none";
+            }
+
+            // Alert if no matching records found
+            var visibleRows = Array.from(rows).slice(1).filter(row => row.style.display !== "none");
+            if (visibleRows.length === 0) {
+                alert("No matching records found.");
+            }
+        }
+    </script>
+</body>
+</html>
+f
